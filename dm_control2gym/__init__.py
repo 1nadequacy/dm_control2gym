@@ -25,7 +25,7 @@ def make(domain_name, task_name, task_kwargs=None, visualize_reward=False):
     # make the Open AI env
     return gym.make(gym_id)
 
-def create_render_mode(name, show=True, return_pixel=False, height=240, width=320, camera_id=-1, overlays=(),
+def create_render_mode(name, show=True, return_pixel=False, height=240, width=320, camera_id=0, overlays=(),
              depth=False, scene_option=None):
 
     render_kwargs = { 'height': height, 'width': width, 'camera_id': camera_id,
