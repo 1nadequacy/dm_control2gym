@@ -92,8 +92,10 @@ class DmControlWrapper(core.Env):
     def getObservation(self):
         return convertObservation(self.timestep.observation)
 
-    def seed(self, seed=None):
+    def seed(self, seed=1):
         self.np_random, seed = seeding.np_random(seed)
+        self.action_space.seed(seed)
+        self.observation_space.seed(seed)
         return [seed]
 
     def reset(self):
