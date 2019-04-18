@@ -112,8 +112,11 @@ class DmControlWrapper(core.Env):
 
 
     def render(self, mode='human', close=False, width=DEFAULT_SIZE, height=DEFAULT_SIZE):
+        render_kwargs = self.render_mode_list[mode]['render_kwargs']
+        render_kwargs['width'] = width
+        render_kwargs['height'] = height
 
-        self.pixels = self.dmcenv.physics.render(**self.render_mode_list[mode]['render_kwargs'])
+        self.pixels = self.dmcenv.physics.render(**render_kwargs)
         if close:
             if self.viewer[mode] is not None:
                 self._get_viewer(mode).close()
