@@ -111,10 +111,11 @@ class DmControlWrapper(core.Env):
         return self.getObservation(), self.timestep.reward, self.timestep.last(), {}
 
 
-    def render(self, mode='human', close=False, width=DEFAULT_SIZE, height=DEFAULT_SIZE):
+    def render(self, mode='human', close=False, width=DEFAULT_SIZE, height=DEFAULT_SIZE, camera_id=0):
         render_kwargs = self.render_mode_list[mode]['render_kwargs']
         render_kwargs['width'] = width
         render_kwargs['height'] = height
+        render_kwargs['camera_id'] = camera_id
 
         self.pixels = self.dmcenv.physics.render(**render_kwargs)
         if close:
